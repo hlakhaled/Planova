@@ -3,21 +3,44 @@ import 'package:planova/core/utils/app_colors.dart';
 import 'package:planova/core/utils/styles.dart';
 import 'package:planova/features/auth/data/models/text_field_model.dart';
 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key, required this.textFieldModel});
-
+class CustomTextField extends StatefulWidget {
+  const CustomTextField({
+    super.key,
+    required this.textFieldModel,
+    required this.textEditingController,
+  });
+  final TextEditingController textEditingController;
   final TextFieldModel textFieldModel;
+
+  @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
+  bool isPressed = false;
   @override
   Widget build(BuildContext context) {
     return TextField(
+      
+      controller: widget.textEditingController,
+      obscureText: widget.textFieldModel.isPassword && !isPressed,
       decoration: InputDecoration(
-        prefixIcon: Icon(textFieldModel.prefixIcon),
+        prefixIcon: Icon(widget.textFieldModel.prefixIcon),
         prefixIconColor: AppColors.textHint,
-        suffixIcon: textFieldModel.isPassword
-            ? Icon(Icons.remove_red_eye_outlined)
+        suffixIcon: widget.textFieldModel.isPassword
+            ? IconButton(
+                onPressed: () {
+                  setState(() {
+                    isPressed = !isPressed;
+                  });
+                },
+                icon: isPressed
+                    ? Icon(Icons.visibility_outlined)
+                    : Icon(Icons.visibility_off_outlined),
+              )
             : null,
         suffixIconColor: AppColors.textHint,
-        hintText: textFieldModel.hintText,
+        hintText: widget.textFieldModel.hintText,
         hintStyle: Styles().style14Regular.copyWith(color: AppColors.textHint),
         border: outlineInputBorder(),
         focusedBorder: outlineInputBorder(),
