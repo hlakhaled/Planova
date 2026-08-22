@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:planova/core/utils/app_colors.dart';
 import 'package:planova/core/utils/styles.dart';
+import 'package:planova/features/auth/data/models/auth_footer_model.dart';
 import 'package:planova/features/auth/data/models/text_field_model.dart';
 import 'package:planova/features/auth/presentation/views/widgets/auth_action_section.dart';
 import 'package:planova/features/auth/presentation/views/widgets/custom_text_field.dart';
 import 'package:planova/features/auth/presentation/views/widgets/forgot_password_row.dart';
-
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
@@ -17,6 +17,7 @@ class SignInView extends StatefulWidget {
 class _SignInViewState extends State<SignInView> {
   late TextEditingController emailController;
   late TextEditingController passwordController;
+  final GlobalKey<FormState> globalKey = GlobalKey<FormState>();
   @override
   void initState() {
     emailController = TextEditingController();
@@ -39,6 +40,9 @@ class _SignInViewState extends State<SignInView> {
       isPassword: true,
     ),
   ];
+  void _handleSignIn() {
+    if (globalKey.currentState!.validate()) {}
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,40 +50,52 @@ class _SignInViewState extends State<SignInView> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    const SizedBox(height: 72),
-                    Text('Sign in', style: Styles().style24SemiBold),
-                    SizedBox(height: 8),
-                    Text(
-                      'Welcome back, you’ve been missed!',
-                      style: Styles().style14Regular.copyWith(
-                        color: AppColors.textHint,
+          child: Form(
+            key: globalKey,
+            child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 72),
+                      Text('Sign in', style: Styles().style24SemiBold),
+                      SizedBox(height: 8),
+                      Text(
+                        'Welcome back, you’ve been missed!',
+                        style: Styles().style14Regular.copyWith(
+                          color: AppColors.textHint,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 48),
-                    CustomTextField(
-                      textFieldModel: textFieldModel[0],
-                      textEditingController: emailController,
-                    ),
-                    const SizedBox(height: 24),
-                    CustomTextField(
-                      textFieldModel: textFieldModel[1],
-                      textEditingController: passwordController,
-                    ),
-                    const SizedBox(height: 16),
-                    const ForgotPasswordRow(),
-                  ],
+                      const SizedBox(height: 48),
+                      CustomTextField(
+                        textFieldModel: textFieldModel[0],
+                        textEditingController: emailController,
+                      ),
+                      const SizedBox(height: 24),
+                      CustomTextField(
+                        textFieldModel: textFieldModel[1],
+                        textEditingController: passwordController,
+                      ),
+                      const SizedBox(height: 16),
+                      const ForgotPasswordRow(),
+                    ],
+                  ),
                 ),
-              ),
-              const SliverFillRemaining(
-                hasScrollBody: false,
-                child: AuthActionSection(),
-              ),
-            ],
+                SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: AuthActionSection(
+                    authFooterModel: const AuthFooterModel(
+                      actionText: "Sign Up",
+                      message: "Don’t Have an Account ? ",
+                    ),
+                    buttonText: "Sign In",
+                    onPressed: () {
+                      _handleSignIn();
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
