@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:planova/core/utils/app_colors.dart';
 import 'package:planova/core/utils/styles.dart';
 import 'package:planova/features/auth/data/models/text_field_model.dart';
-import 'package:planova/features/auth/presentation/views/widgets/auth_footer.dart';
-import 'package:planova/features/auth/presentation/views/widgets/custom_button.dart';
+import 'package:planova/features/auth/presentation/views/widgets/auth_action_section.dart';
 import 'package:planova/features/auth/presentation/views/widgets/custom_text_field.dart';
 import 'package:planova/features/auth/presentation/views/widgets/forgot_password_row.dart';
-import 'package:planova/features/auth/presentation/views/widgets/or_divider.dart';
+
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
@@ -72,23 +71,13 @@ class _SignInViewState extends State<SignInView> {
                       textEditingController: passwordController,
                     ),
                     const SizedBox(height: 16),
-                    ForgotPasswordRow(),
+                    const ForgotPasswordRow(),
                   ],
                 ),
               ),
-              SliverFillRemaining(
+              const SliverFillRemaining(
                 hasScrollBody: false,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    CustomButton(text: "Sign In"),
-                    const SizedBox(height: 32),
-                    OrDivider(),
-                    const SizedBox(height: 32),
-                    AuthFooter(),
-                    const SizedBox(height: 40),
-                  ],
-                ),
+                child: AuthActionSection(),
               ),
             ],
           ),
