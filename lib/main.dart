@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:planova/features/auth/presentation/views/sign_in_view.dart';
-import 'package:planova/features/auth/presentation/views/sign_up_view.dart';
+import 'package:planova/core/utils/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: const SignUpView(),
+      routerConfig: AppRouter.router,
     );
   }
 }
