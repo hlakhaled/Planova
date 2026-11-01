@@ -9,10 +9,22 @@ class Styles {
     color: AppColors.primary,
   );
 
+  TextStyle get style12SemiBold => const TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Poppins',
+    color: AppColors.textHint,
+  );
   TextStyle get style14Regular => const TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
     fontFamily: 'Poppins',
+  );
+  TextStyle get style14Medium => const TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Poppins',
+    color: AppColors.textHint,
   );
   TextStyle get style14SemiBlod => const TextStyle(
     fontSize: 14,

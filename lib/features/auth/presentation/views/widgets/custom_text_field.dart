@@ -24,7 +24,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return TextFormField(
       textInputAction: TextInputAction.next,
       validator: (value) {
-        if (value!.trim().isEmpty || value == null) {
+        if (value!.trim().isEmpty) {
           return "Please Enter Your ${widget.textFieldModel.hintText}";
         }
         return null;
