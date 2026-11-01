@@ -18,9 +18,6 @@ class _VerifyCodeViewState extends State<VerifyCodeView> {
   final _codeController = VerificationCodeController();
   void _handleVerifyCode() {
     if (!_formKey.currentState!.validate()) return;
-
-    final code = _codeController.text;
-
   }
 
   @override
@@ -45,7 +42,7 @@ class _VerifyCodeViewState extends State<VerifyCodeView> {
                       const SizedBox(height: 72),
                       Text('Verify Code', style: Styles().style24SemiBold),
                       const SizedBox(height: 16),
-                      VerificationEmailText(email: "example@gmail.com"),
+                      const VerificationEmailText(email: "example@gmail.com"),
                       const SizedBox(height: 64),
                       VerificationCodeInput(controller: _codeController),
                       const SizedBox(height: 24),
