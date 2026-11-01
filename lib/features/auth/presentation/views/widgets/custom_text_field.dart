@@ -51,9 +51,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
         suffixIconColor: AppColors.textHint,
         hintText: widget.textFieldModel.hintText,
         hintStyle: Styles().style14Regular.copyWith(color: AppColors.textHint),
-        border: outlineInputBorder(AppColors.grey300),
+        border: outlineInputBorder(AppColors.borderGray),
         focusedBorder: outlineInputBorder(AppColors.lavender),
-        enabledBorder: outlineInputBorder(AppColors.grey300),
+        enabledBorder: outlineInputBorder(AppColors.borderGray),
       ),
     );
   }

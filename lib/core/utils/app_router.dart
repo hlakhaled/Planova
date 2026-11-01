@@ -11,7 +11,7 @@ class AppRouter {
   static final changePassword = "/changePassword";
   static final verifyCode = "/verifyCode";
   static final router = GoRouter(
-    initialLocation: verifyCode,
+    initialLocation: signIn,
     routes: [
       GoRoute(path: signIn, builder: (context, state) => const SignInView()),
       GoRoute(path: signUp, builder: (context, state) => const SignInView()),
