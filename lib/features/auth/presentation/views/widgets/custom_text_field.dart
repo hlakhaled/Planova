@@ -32,7 +32,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       controller: widget.textEditingController,
       obscureText: widget.textFieldModel.isPassword && !isObscure,
       decoration: InputDecoration(
-        prefixIcon: Icon(widget.textFieldModel.prefixIcon),
+        prefixIcon: widget.textFieldModel.isprefixIcon
+            ? Icon(widget.textFieldModel.prefixIcon)
+            : null,
         prefixIconColor: AppColors.textHint,
         suffixIcon: widget.textFieldModel.isPassword
             ? IconButton(

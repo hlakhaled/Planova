@@ -4,10 +4,12 @@ class TextFieldModel {
   final String hintText;
   final IconData prefixIcon;
   final bool isPassword;
+  final bool isprefixIcon;
 
- const TextFieldModel({
+  const TextFieldModel({
     required this.hintText,
-    required this.prefixIcon,
+    this.prefixIcon = Icons.person_outline,
     this.isPassword = false,
+    this.isprefixIcon = true,
   });
 }

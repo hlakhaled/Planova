@@ -6,6 +6,7 @@ class Styles {
     fontSize: 24,
     fontWeight: FontWeight.w600,
     fontFamily: 'Poppins',
+    color: AppColors.primary,
   );
 
   TextStyle get style14Regular => const TextStyle(
